@@ -34,27 +34,33 @@ public class PageGenerator extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            String color = request.getParameter("color");
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet PageGenerator</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Lab 2</h1>");
+            out.println("<h1 style='color:"+ color + "'>Lab 2</h1>");
+            out.println("<h1>Welcome " + firstName + " " + lastName + "</h1>");
             out.println("<table width=\"100px\">");
             out.println("<caption>Simple Table</caption>");
             
             int count = 1;
             
-            for(int i = 1; i <= 3; i++){
+            for(int i = 0; i < 3; i++){
                 out.println("<tr>");
-                for(int k = 0; k <= 2; k++){
+                for(int k = 0; k < 3; k++){
                     out.println("<td>" + count++ + "</td>");
                 }
                 out.println("</tr>");
             }
             
             out.println("</table>");
+            out.println("<br><p><a href=\"index.html\">Back</a></p>");
             out.println("</body>");
             out.println("</html>");
         }
